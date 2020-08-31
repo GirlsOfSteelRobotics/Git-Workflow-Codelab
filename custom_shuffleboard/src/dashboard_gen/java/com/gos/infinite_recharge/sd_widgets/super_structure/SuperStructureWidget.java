@@ -43,7 +43,7 @@ public class SuperStructureWidget extends SimpleAnnotatedWidget<SuperStructureDa
             }
 
             if (LiftData.hasChanged(changes)) {
-                m_controller.updateLift(newData.getLiftData());
+                m_controller.updateLift(newData.getLift());
             }
 
             if (ShooterConveyorData.hasChanged(changes)) {
@@ -59,7 +59,7 @@ public class SuperStructureWidget extends SimpleAnnotatedWidget<SuperStructureDa
             }
 
             if (WinchData.hasChanged(changes)) {
-                m_controller.updateWinch(newData.getWinchData());
+                m_controller.updateWinch(newData.getWinch());
             }
         });
     }

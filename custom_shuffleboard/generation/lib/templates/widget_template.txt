@@ -1,0 +1,48 @@
+package {{overall_config.base_package}}.{{widget.package_name}};
+
+
+{% for child in widget.children_tables %}
+import {{overall_config.base_package}}.{{widget.package_name}}.data.{{child.table}}Data;{% endfor %}
+import {{overall_config.base_package}}.{{widget.package_name}}.data.{{widget.table}}Data;
+
+import edu.wpi.first.shuffleboard.api.widget.Description;
+import edu.wpi.first.shuffleboard.api.widget.ParametrizedController;
+import edu.wpi.first.shuffleboard.api.widget.SimpleAnnotatedWidget;
+import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
+
+import java.util.Map;
+
+@Description(name = "{{xxxxxxxxx}}", dataTypes = {% raw %}{{% endraw %}{{widget.table}}Data.class})
+@ParametrizedController("{{yyyyyyyyyy}}.fxml")
+public class {{widget.table}}Widget extends SimpleAnnotatedWidget<{{widget.table}}Data> {
+    @FXML
+    private Pane m_root;
+
+    @FXML
+    protected {{widget.table}}Controller m_controller;
+
+    @Override
+    public Pane getView() {
+        return m_root;
+    }
+
+    @FXML
+    public void initialize() {
+
+        dataOrDefault.addListener((ignored, oldData, newData) -> {
+            final Map<String, Object> changes = newData.changesFrom(oldData);
+            if (!changes.isEmpty()) {
+                System.out.println("changes : " + changes); // NOPMD
+            }
+
+{% for child in widget.children_tables %}
+            if ({{child.table}}Data.hasChanged(changes)) {
+                m_controller.update{{child.table}}(newData.get{{child.table}}());
+            }
+{% endfor %}
+        });
+    }
+
+}
+
