@@ -86,7 +86,7 @@ widgets:
   children_tables:
     - table: ControlPanel
       package_name: control_panel
-      table_name: LED_SIM_TABLE_NAME
+      table_name: CONTROL_PANEL_TABLE_NAME
       entries:
         - type: Double
           name: simAngle

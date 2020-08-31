@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class ControlPanelDataType extends ComplexDataType<ControlPanelData> {
+
     public ControlPanelDataType() {
         super(SmartDashboardNames.CONTROL_PANEL_TABLE_NAME, ControlPanelData.class);
     }

@@ -40,12 +40,6 @@ public class ControlPanelData extends ComplexData<ControlPanelData> {
         return asMap("");
     }
 
-    /**
-     * Gets a representation of this data as a map.
-     *
-     * @param prefix The prefix to prepend to the field names
-     * @return The map representation
-     */
     public Map<String, Object> asMap(String prefix) {
         Map<String, Object> map = new HashMap<>();
         map.put(prefix + SmartDashboardNames.CONTROL_PANEL_COLOR_SEEN, m_colorSeen);
@@ -57,11 +51,13 @@ public class ControlPanelData extends ComplexData<ControlPanelData> {
     }
 
     public static boolean hasChanged(Map<String, Object> changes) {
-        return changes.containsKey(SmartDashboardNames.CONTROL_PANEL_COLOR_SEEN)
-            || changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_ANGLE)
-            || changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_R_COLOR)
-            || changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_G_COLOR)
-            || changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_B_COLOR);
+        boolean changed = false;
+        changed |= changes.containsKey(SmartDashboardNames.CONTROL_PANEL_COLOR_SEEN);
+        changed |= changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_ANGLE);
+        changed |= changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_R_COLOR);
+        changed |= changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_G_COLOR);
+        changed |= changes.containsKey(SmartDashboardNames.CONTROL_PANEL_SIM_WHEEL_B_COLOR);
+        return changed;
     }
 
     public Double getSimAngle() {

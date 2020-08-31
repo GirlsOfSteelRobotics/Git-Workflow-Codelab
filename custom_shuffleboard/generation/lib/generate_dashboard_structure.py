@@ -49,9 +49,26 @@ def dump_plugin(overall_config, output_dir):
 
     package_name_as_dir = _package_to_dir(overall_config['base_package'])
 
-    output_file = os.path.join(output_dir, package_name_as_dir, "GirlsOfSteelRobotPlugin2020.java")
+    plugin_dump_dir = os.path.join(output_dir, package_name_as_dir)
+    _make_dir_if_not_exists(plugin_dump_dir)
+
+    output_file = os.path.join(plugin_dump_dir, "GirlsOfSteelRobotPlugin2020.java")
     print(output_file)
 
+    open(output_file, 'w').write(template_output)
+
+def dump_widget_top_level_data(overall_config, widget, output_dir):
+    template = load_template('parent_data_template.txt')
+    template_output = Template(template).render(overall_config=overall_config, widget=widget)
+
+    full_package = overall_config['base_package'] + "." + widget["package_name"]
+    package_name_as_dir = _package_to_dir(full_package)
+
+    data_dir = os.path.join(output_dir, package_name_as_dir, "data")
+    _make_dir_if_not_exists(data_dir)
+    output_file = os.path.join(data_dir, widget['table'] + "Data.java")
+    # print(output_file)
+    #
     open(output_file, 'w').write(template_output)
 
 
@@ -75,6 +92,7 @@ def generate_dashboard_structure(config, output_dir):
 
     for widget in config['widgets']:
         print(f"Running generation for widget '{widget}'")
+        dump_widget_top_level_data(config, widget, output_dir)
         dump_single_components(config, widget, output_dir)
 
 

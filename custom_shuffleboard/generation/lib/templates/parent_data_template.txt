@@ -1,4 +1,4 @@
-package {package_name}.data;
+package {{overall_config.base_package}}.{{widget.package_name}}.data;
 
 import {{overall_config.base_package}}.SmartDashboardNames;
 import edu.wpi.first.shuffleboard.api.data.ComplexData;
@@ -7,23 +7,32 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("PMD.DataClass")
-public class {{table_name}}Data extends ComplexData<{{table_name}}Data> {
-{variable_definition}
+public class {{widget.table}}Data extends ComplexData<{{widget.table}}Data> {
+{% for child in widget.children_tables %}
+    private final {{child.table}}Data m_{{child.table}};{% endfor %}
 
-    public {{table_name}}Data() {
-{default_constructor}
+
+    public {{widget.table}}Data() {
+{% for child in widget.children_tables %}
+        m_{{child.table}} = new {{child.table}}Data();{% endfor %}
     }
 
-    public {{table_name}}Data(Map<String, Object> map) {
-{map_constructor}
+    public {{widget.table}}Data(Map<String, Object> map) {
+{% for child in widget.children_tables %}
+        m_{{child.table}} = new {{child.table}}Data(SmartDashboardNames.{{child.table_name}}, map);{% endfor %}
     }
 
     @Override
     public Map<String, Object> asMap() {
         Map<String, Object> map = new HashMap<>();
-{as_map}
+{% for child in widget.children_tables %}
+        map.putAll(m_{{child.table}}.asMap(SmartDashboardNames.{{child.table_name}} + "/");{% endfor %}
         return map;
     }
 
-{accessors}
+{% for child in widget.children_tables %}
+    public {{child.table}}Data get{{child.table}}() {
+        return m_{{child.table}};
+    }
+{% endfor %}
 }

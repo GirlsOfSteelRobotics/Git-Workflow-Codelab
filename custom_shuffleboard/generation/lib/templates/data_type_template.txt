@@ -22,3 +22,4 @@ public class {{child.table}}DataType extends ComplexDataType<{{child.table}}Data
         return new {{child.table}}Data();
     }
 }
+

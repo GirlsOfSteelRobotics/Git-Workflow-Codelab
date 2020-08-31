@@ -55,3 +55,4 @@ public class {{child.table}}Data extends ComplexData<{{child.table}}Data> {
     }{% if not loop.last %}
 {%endif%}{% endfor %}
 }
+

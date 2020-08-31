@@ -22,7 +22,7 @@ public class SuperStructureWidget extends SimpleAnnotatedWidget<SuperStructureDa
     private Pane m_root;
 
     @FXML
-    protected SuperStructureController m_controlPanelController;
+    protected SuperStructureController m_controller;
 
     @Override
     public Pane getView() {
@@ -38,28 +38,28 @@ public class SuperStructureWidget extends SimpleAnnotatedWidget<SuperStructureDa
                 System.out.println("changes : " + changes); // NOPMD
             }
 
-            if (ShooterConveyorData.hasChanged(changes)) {
-                m_controlPanelController.updateShooterConveyor(newData.getShooterConveyor());
-            }
-
-            if (ShooterIntakeData.hasChanged(changes)) {
-                m_controlPanelController.updateShooterIntake(newData.getShooterIntake());
-            }
-
-            if (ShooterWheelsData.hasChanged(changes)) {
-                m_controlPanelController.updateShooterWheels(newData.getShooterWheels());
-            }
-
             if (ControlPanelData.hasChanged(changes)) {
-                m_controlPanelController.updateControlPanel(newData.getControlPanel());
-            }
-
-            if (WinchData.hasChanged(changes)) {
-                m_controlPanelController.updateWinch(newData.getWinchData());
+                m_controller.updateControlPanel(newData.getControlPanel());
             }
 
             if (LiftData.hasChanged(changes)) {
-                m_controlPanelController.updateLift(newData.getLiftData());
+                m_controller.updateLift(newData.getLiftData());
+            }
+
+            if (ShooterConveyorData.hasChanged(changes)) {
+                m_controller.updateShooterConveyor(newData.getShooterConveyor());
+            }
+
+            if (ShooterIntakeData.hasChanged(changes)) {
+                m_controller.updateShooterIntake(newData.getShooterIntake());
+            }
+
+            if (ShooterWheelsData.hasChanged(changes)) {
+                m_controller.updateShooterWheels(newData.getShooterWheels());
+            }
+
+            if (WinchData.hasChanged(changes)) {
+                m_controller.updateWinch(newData.getWinchData());
             }
         });
     }
