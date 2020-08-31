@@ -7,18 +7,22 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class ExampleSubsystem extends SubsystemBase {
-  /**
-   * Creates a new ExampleSubsystem.
-   */
-  public ExampleSubsystem() {
+public class SpinnyWheelSubsystem extends SubsystemBase {
 
-  }
+    private final SpeedController m_wheelMotor;
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
+    public SpinnyWheelSubsystem() {
+        m_wheelMotor = new Talon(Constants.SC_SPINNY_MOTOR);
+
+    }
+
+    @Override
+    public void periodic() {
+        // This method will be called once per scheduler run
+    }
 }

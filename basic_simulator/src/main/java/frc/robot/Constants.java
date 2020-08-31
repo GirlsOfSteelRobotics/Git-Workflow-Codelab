@@ -16,4 +16,15 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+    /////////////////////////////////
+    // Sensor / Actuator ports
+    /////////////////////////////////
+
+    // PWM
+    public static final int SC_LIFT_MOTOR = 0;
+    public static final int SC_SPINNY_MOTOR = 1;
+
+    // Solenoids
+    public static final int SOLENOID_PUNCH = 0;
 }

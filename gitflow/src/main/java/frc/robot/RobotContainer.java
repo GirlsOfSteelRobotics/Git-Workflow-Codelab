@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -40,17 +33,14 @@ public class RobotContainer {
     /**
      * The container for the robot.  Contains subsystems, OI devices, and commands.
      */
-    public RobotContainer()
-    {
+    public RobotContainer() {
         m_drivetrain = new ChassisSubsystem();
 
         Field[] fields = RobotContainer.class.getDeclaredFields();
 
         List<String> sortedNames = new ArrayList<>();
-        for(Field field : fields)
-        {
-            if (!"m_drivetrain".equals(field.getName()))
-            {
+        for (Field field : fields) {
+            if (!"m_drivetrain".equals(field.getName())) {
                 sortedNames.add(field.getType().getName());
             }
         }
@@ -58,8 +48,7 @@ public class RobotContainer {
         sortedNames.sort(String::compareTo);
 
         System.out.println("\n\n\n\n********************************************************");
-        for(String className : sortedNames)
-        {
+        for (String className : sortedNames) {
             try {
                 Class<?> clazz = Class.forName(className);
                 Object object = clazz.getDeclaredConstructor().newInstance();
@@ -79,8 +68,7 @@ public class RobotContainer {
      * edu.wpi.first.wpilibj.Joystick Joystick} or {@link XboxController}), and then passing it to a
      * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton JoystickButton}.
      */
-    private void configureButtonBindings()
-    {
+    private void configureButtonBindings() {
         m_drivetrain.setDefaultCommand(new TelopDriveCommand(m_drivetrain));
     }
 
@@ -90,8 +78,7 @@ public class RobotContainer {
      *
      * @return the command to run in autonomous
      */
-    public Command getAutonomousCommand()
-    {
+    public Command getAutonomousCommand() {
         return null;
     }
 }
