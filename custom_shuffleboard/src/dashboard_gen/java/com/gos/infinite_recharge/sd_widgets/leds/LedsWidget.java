@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 
 @Description(name = "Addressable LED Sim Widget", dataTypes = LedData.class)
 @ParametrizedController("led_widget.fxml")
-public class LedWidget extends SimpleAnnotatedWidget<LedData> {
+public class LedsWidget extends SimpleAnnotatedWidget<LedData> {
     @FXML
     private Pane m_root;
 

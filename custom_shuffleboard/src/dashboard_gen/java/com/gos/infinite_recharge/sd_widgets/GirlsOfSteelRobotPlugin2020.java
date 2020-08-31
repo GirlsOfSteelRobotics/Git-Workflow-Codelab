@@ -3,7 +3,7 @@ package com.gos.infinite_recharge.sd_widgets;
 import com.google.common.collect.ImmutableList;
 import com.gos.infinite_recharge.sd_widgets.control_panel.ControlPanelWidget;
 import com.gos.infinite_recharge.sd_widgets.control_panel.data.ControlPanelDataType;
-import com.gos.infinite_recharge.sd_widgets.leds.LedWidget;
+import com.gos.infinite_recharge.sd_widgets.leds.LedsWidget;
 import com.gos.infinite_recharge.sd_widgets.leds.data.LedDataType;
 import com.gos.infinite_recharge.sd_widgets.super_structure.SuperStructureWidget;
 import com.gos.infinite_recharge.sd_widgets.super_structure.data.SuperStructureDataType;
@@ -22,7 +22,7 @@ public class GirlsOfSteelRobotPlugin2020 extends Plugin {
     public List<ComponentType> getComponents() {
         return ImmutableList.of(
             WidgetType.forAnnotatedWidget(ControlPanelWidget.class),
-            WidgetType.forAnnotatedWidget(LedWidget.class),
+            WidgetType.forAnnotatedWidget(LedsWidget.class),
             WidgetType.forAnnotatedWidget(SuperStructureWidget.class));
 
     }
