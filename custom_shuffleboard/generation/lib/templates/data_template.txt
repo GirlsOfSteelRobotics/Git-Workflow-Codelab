@@ -1,0 +1,57 @@
+package {{overall_config.base_package}}.{{child.package_name}}.data;
+
+import {{overall_config.base_package}}.SmartDashboardNames;
+import edu.wpi.first.shuffleboard.api.data.ComplexData;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@SuppressWarnings("PMD.DataClass")
+public class {{child.table}}Data extends ComplexData<{{child.table}}Data> {
+{% for variable in child.entries %}
+    private final {{variable.type}} m_{{variable.name}};{% endfor %}
+
+
+    public {{child.table}}Data() {
+        this({% for variable in child.entries %}{{default_value_lookup[variable.type]}}{% if not loop.last %}, {%endif%}{% endfor %});
+    }
+
+    public {{child.table}}Data(Map<String, Object> map) {
+        this("", map);
+    }
+
+    public {{child.table}}Data(String prefix, Map<String, Object> map) {
+        this({% for variable in child.entries %}({{variable.type[0].upper() + variable.type[1:]}}) map.getOrDefault(prefix + "/" + SmartDashboardNames.{{variable.dasboard_constant}}, {{default_value_lookup[variable.type]}}){% if not loop.last %}, {%endif%}{% endfor %});
+    }
+
+    public {{child.table}}Data({% for variable in child.entries %}{{variable.type}} {{variable.name}}{% if not loop.last %}, {%endif%}{% endfor %}) {% raw %}{{% endraw %}{% for variable in child.entries %}
+        m_{{variable.name}} = {{variable.name}};{% endfor %}
+    }
+
+    @Override
+    public Map<String, Object> asMap() {
+        return asMap("");
+    }
+
+    public Map<String, Object> asMap(String prefix) {
+        Map<String, Object> map = new HashMap<>();{% for variable in child.entries %}
+        map.put(prefix + SmartDashboardNames.{{variable.dasboard_constant}}, m_{{variable.name}});{% endfor %}
+        return map;
+    }
+
+    public static boolean hasChanged(Map<String, Object> changes) {
+        return hasChanged(SmartDashboardNames.{{child.table_name}} + "/", changes);
+    }
+
+    public static boolean hasChanged(String prefix, Map<String, Object> changes) {
+        boolean changed = false;{% for variable in child.entries %}
+        changed |= changes.containsKey(prefix + SmartDashboardNames.{{variable.dasboard_constant}});{% endfor %}
+
+        return changed;
+    }
+{% for variable in child.entries %}
+    public {{variable.type}} get{{variable.name[0].upper() + variable.name[1:]}}() {
+        return m_{{variable.name}};
+    }{% if not loop.last %}
+{%endif%}{% endfor %}
+}
