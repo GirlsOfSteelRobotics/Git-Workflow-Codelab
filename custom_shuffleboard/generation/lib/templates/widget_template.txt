@@ -1,6 +1,4 @@
 package {{overall_config.base_package}}.{{widget.package_name}};
-
-
 {% for child in widget.children_tables %}
 import {{overall_config.base_package}}.{{widget.package_name}}.data.{{child.table}}Data;{% endfor %}
 import {{overall_config.base_package}}.{{widget.package_name}}.data.{{widget.table}}Data;
@@ -13,8 +11,8 @@ import javafx.scene.layout.Pane;
 
 import java.util.Map;
 
-@Description(name = "{{xxxxxxxxx}}", dataTypes = {% raw %}{{% endraw %}{{widget.table}}Data.class})
-@ParametrizedController("{{yyyyyyyyyy}}.fxml")
+@Description(name = "{{widget.widget_name}}", dataTypes = {% raw %}{{% endraw %}{{widget.table}}Data.class})
+@ParametrizedController("{{camel_to_snake(widget.table)}}_widget.fxml")
 public class {{widget.table}}Widget extends SimpleAnnotatedWidget<{{widget.table}}Data> {
     @FXML
     private Pane m_root;
@@ -35,7 +33,6 @@ public class {{widget.table}}Widget extends SimpleAnnotatedWidget<{{widget.table
             if (!changes.isEmpty()) {
                 System.out.println("changes : " + changes); // NOPMD
             }
-
 {% for child in widget.children_tables %}
             if ({{child.table}}Data.hasChanged(changes)) {
                 m_controller.update{{child.table}}(newData.get{{child.table}}());

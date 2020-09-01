@@ -1,4 +1,4 @@
-package {{overall_config.base_package}}.{{child.package_name}}.data;
+package {{overall_config.base_package}}.{{widget.package_name}}.data;
 
 import {{overall_config.base_package}}.SmartDashboardNames;
 import edu.wpi.first.shuffleboard.api.data.ComplexData;

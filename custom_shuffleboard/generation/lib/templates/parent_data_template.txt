@@ -11,10 +11,9 @@ public class {{widget.table}}Data extends ComplexData<{{widget.table}}Data> {
 {% for child in widget.children_tables %}
     private final {{child.table}}Data m_{{lower_first_char(child.table)}};{% endfor %}
 
-
     public {{widget.table}}Data() {
 {% for child in widget.children_tables %}
-         m_{{lower_first_char(child.table)}} = new {{child.table}}Data();{% endfor %}
+        m_{{lower_first_char(child.table)}} = new {{child.table}}Data();{% endfor %}
     }
 
     public {{widget.table}}Data(Map<String, Object> map) {
@@ -29,10 +28,10 @@ public class {{widget.table}}Data extends ComplexData<{{widget.table}}Data> {
         map.putAll(m_{{lower_first_char(child.table)}}.asMap(SmartDashboardNames.{{child.table_name}} + "/"));{% endfor %}
         return map;
     }
-
 {% for child in widget.children_tables %}
     public {{child.table}}Data get{{child.table}}() {
         return m_{{lower_first_char(child.table)}};
     }
 {% endfor %}
 }
+

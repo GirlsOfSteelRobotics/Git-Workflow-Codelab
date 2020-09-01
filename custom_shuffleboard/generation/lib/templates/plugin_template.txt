@@ -1,7 +1,7 @@
 package {{overall_config.base_package}};
 {% for widget in overall_config.widgets %}
-import {{overall_config.base_package}}.{{widget.package_name}}.{{widget.table}};
-{% endfor %}
+import {{overall_config.base_package}}.{{widget.package_name}}.{{widget.table}}Widget;
+import {{overall_config.base_package}}.{{widget.package_name}}.data.{{widget.table}}DataType;{% endfor %}
 import com.google.common.collect.ImmutableList;
 import edu.wpi.first.shuffleboard.api.data.DataType;
 import edu.wpi.first.shuffleboard.api.plugin.Description;
@@ -12,20 +12,22 @@ import edu.wpi.first.shuffleboard.api.widget.WidgetType;
 import java.util.List;
 
 @Description(group = "{{overall_config.base_package}}", name = "{{overall_config.plugin_name}}", version = PluginVersion.VERSION, summary = "{{overall_config.plugin_summary}}")
-public class GirlsOfSteelRobotPlugin2020 extends Plugin {
+public class {{overall_config.plugin_name}} extends Plugin {
 
     @Override
     public List<ComponentType> getComponents() {
-        return ImmutableList.of(
-            WidgetType.forAnnotatedWidget(ControlPanelWidget.class),
-            WidgetType.forAnnotatedWidget(LedWidget.class),
-            WidgetType.forAnnotatedWidget(SuperStructureWidget.class));
+        return ImmutableList.of({% for widget in overall_config.widgets %}
+            WidgetType.forAnnotatedWidget({{widget.table}}Widget.class){% if not loop.last %}, {%endif%}
+            {% endfor %});
 
     }
 
     @Override
     public List<DataType> getDataTypes() {
-        return ImmutableList.of(new ControlPanelDataType(), new LedDataType(), new SuperStructureDataType());
+        return ImmutableList.of({% for widget in overall_config.widgets %}
+            new {{widget.table}}DataType(){% if not loop.last %}, {%endif%}
+        {% endfor %});
+
     }
 
 }

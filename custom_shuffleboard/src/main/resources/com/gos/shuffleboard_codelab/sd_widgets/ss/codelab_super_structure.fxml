@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.*?>
+
+<BorderPane fx:id="m_pane" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gos.shuffleboard_codelab.sd_widgets.ss.CodelabSuperStructureController">
+
+    <center>
+        <Group fx:id="m_group">
+            <children>
+
+            </children>
+        </Group>
+    </center>
+</BorderPane>
