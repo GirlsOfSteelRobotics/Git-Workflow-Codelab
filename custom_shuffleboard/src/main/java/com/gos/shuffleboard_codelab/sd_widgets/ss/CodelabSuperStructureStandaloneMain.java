@@ -3,9 +3,13 @@ package com.gos.shuffleboard_codelab.sd_widgets.ss;
 import com.gos.shuffleboard_codelab.sd_widgets.SmartDashboardNames;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import com.gos.shuffleboard_codelab.sd_widgets.ss.data.*;
 
@@ -38,11 +42,11 @@ public class CodelabSuperStructureStandaloneMain {
             case A:
                 m_liftingSpeed = -0.75;
                 break;
-            case W:
-                m_liftingHeight -= 5;
-                break;
             case S:
-                m_liftingHeight += 5;
+                m_liftingHeight -= 1;
+                break;
+            case W:
+                m_liftingHeight += 1;
                 break;
 
             case X:
@@ -142,6 +146,36 @@ public class CodelabSuperStructureStandaloneMain {
 
     public static class PseudoMain extends Application {
 
+        private void testing(Stage primaryStage) {
+            // create a circle
+            Circle circle = new Circle();
+
+            // set the position of center of the  circle
+            circle.setCenterX(50);
+            circle.setCenterY(50);
+
+            // set Radius of the circle
+            circle.setRadius(50.0f);
+
+            // set the fill of the circle
+            circle.setFill(Color.BLUE);
+
+            // create a Group
+            Group group = new Group(circle);
+
+            // create a scene
+//            Scene scene = new Scene(group, 500, 300);
+
+            // create a BorderPane
+            Pane border_pane = new Pane(group);
+
+            // create a scene
+            Scene scene = new Scene(border_pane, 400, 300);
+
+            // set the scene
+            primaryStage.setScene(scene);
+        }
+
         @Override
         public void start(Stage primaryStage) throws IOException {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("codelab_super_structure_widget.fxml"));
@@ -152,6 +186,10 @@ public class CodelabSuperStructureStandaloneMain {
             primaryStage.setScene(scene);
 
             new CodelabSuperStructureStandaloneMain(scene, controller);
+
+
+
+
             primaryStage.show();
         }
     }

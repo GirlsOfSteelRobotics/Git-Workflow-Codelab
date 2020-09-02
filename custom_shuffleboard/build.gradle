@@ -24,6 +24,7 @@ ext {
 
 
 task install_plugin(type: Copy) {
+    group = "Girls Of Steel"
     from(tasks.named("jar"))
     into("${System.getProperty("user.home")}/Shuffleboard/plugins")
 }
@@ -34,10 +35,12 @@ task install_plugin(type: Copy) {
 sourceSets.main.java.srcDir "${buildDir}/generated/java/"
 sourceSets.main.java.srcDir "src/dashboard_gen/java/"
 task generate_version() {
-    def generated_dir = file("$buildDir/generated/java/com/gos/shuffleboard_codelab/sd_widgets")
+    def package_name = "com.gos.shuffleboard_codelab.sd_widgets"
+    def package_dir = package_name.replace(".", "/")
+    def generated_dir = file("$buildDir/generated/java/" + package_dir)
     generated_dir.mkdirs()
     def output_file = file("$generated_dir/PluginVersion.java")
-    def file_template = """package com.gos.infinite_recharge.sd_widgets;
+    def file_template = """package ${package_name};
 
 
 public class PluginVersion {

@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.Map;
 
-@Description(name = "Infinite Recharge Super Structure Widget", dataTypes = {CodelabSuperStructureData.class})
+@Description(name = "Codelab Super Structure", dataTypes = {CodelabSuperStructureData.class})
 @ParametrizedController("codelab_super_structure_widget.fxml")
 public class CodelabSuperStructureWidget extends SimpleAnnotatedWidget<CodelabSuperStructureData> {
     @FXML
