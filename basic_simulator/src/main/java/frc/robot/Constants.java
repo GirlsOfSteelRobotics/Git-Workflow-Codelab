@@ -22,9 +22,24 @@ public final class Constants {
     /////////////////////////////////
 
     // PWM
-    public static final int SC_LIFT_MOTOR = 0;
-    public static final int SC_SPINNY_MOTOR = 1;
+
+    // Digital IO
+    public static final int DIO_LIFT_LOWER_LIMIT = 0;
+    public static final int DIO_LIFT_UPPER_LIMIT = 1;
 
     // Solenoids
     public static final int SOLENOID_PUNCH = 0;
+
+    // CAN
+    public static final int CAN_CHASSIS_LEFT_A = 1;
+    public static final int CAN_CHASSIS_LEFT_B = 2;
+    public static final int CAN_CHASSIS_RIGHT_A = 3;
+    public static final int CAN_CHASSIS_RIGHT_B = 4;
+    public static final int CAN_LIFT_MOTOR = 5;
+    public static final int CAN_SPINNY_MOTOR = 6;
+    public static final int CAN_PIGEON = 7;
+
+    private Constants() {
+
+    }
 }

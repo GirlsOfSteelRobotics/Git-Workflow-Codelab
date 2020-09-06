@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.auton.AutonFactory;
 import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.subsystems.LiftingSubsystem;
 import frc.robot.subsystems.PunchSubsystem;
@@ -21,6 +22,7 @@ import frc.robot.subsystems.SpinnyWheelSubsystem;
  * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
  * (including subsystems, commands, and button mappings) should be declared here.
  */
+@SuppressWarnings("PMD.SingularField")
 public class RobotContainer {
     // Subsystems
     private final ChassisSubsystem m_chassisSubsystem;
@@ -28,9 +30,7 @@ public class RobotContainer {
     private final PunchSubsystem m_punchSubsystem;
     private final SpinnyWheelSubsystem m_spinnyWheelSubsystem;
 
-    private final Command m_autoCommand = null;
-
-
+    private final AutonFactory m_autonFactory;
 
     /**
      * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -41,6 +41,10 @@ public class RobotContainer {
         m_liftingSubsystem = new LiftingSubsystem();
         m_punchSubsystem = new PunchSubsystem();
         m_spinnyWheelSubsystem = new SpinnyWheelSubsystem();
+
+        new OI(m_chassisSubsystem, m_liftingSubsystem, m_punchSubsystem, m_spinnyWheelSubsystem);
+
+        m_autonFactory = new AutonFactory();
 
         // Configure the button bindings
         configureButtonBindings();
@@ -62,7 +66,14 @@ public class RobotContainer {
      * @return the command to run in autonomous
      */
     public Command getAutonomousCommand() {
-        // An ExampleCommand will run in autonomous
-        return m_autoCommand;
+        return m_autonFactory.getAutonMode();
+    }
+
+    public LiftingSubsystem getLift() {
+        return m_liftingSubsystem;
+    }
+
+    public ChassisSubsystem getChassis() {
+        return m_chassisSubsystem;
     }
 }

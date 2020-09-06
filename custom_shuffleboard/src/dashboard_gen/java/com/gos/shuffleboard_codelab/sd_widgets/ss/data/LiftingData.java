@@ -74,11 +74,11 @@ public class LiftingData extends ComplexData<LiftingData> {
         return m_height;
     }
 
-    public boolean getUpperLimitSwitch() {
+    public boolean isAtUpperLimit() {
         return m_upperLimitSwitch;
     }
 
-    public boolean getLowerLimitSwitch() {
+    public boolean isAtLowerLimit() {
         return m_lowerLimitSwitch;
     }
 }

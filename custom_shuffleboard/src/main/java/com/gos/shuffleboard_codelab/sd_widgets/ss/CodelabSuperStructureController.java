@@ -126,7 +126,7 @@ public class CodelabSuperStructureController {
     }
 
     public void updatePunch(PunchData punchData) {
-        if (punchData.getIsPunchRetracted()) {
+        if (punchData.isPunchExtended()) {
             m_punch.setHeight(PUNCH_RETRACTED_HEIGHT);
             m_punch.setY(PUNCH_RETRACTED_START_Y);
         }

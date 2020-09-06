@@ -7,6 +7,8 @@ import frc.robot.Constants;
 import frc.robot.SmartDashboardNames;
 
 public class PunchSubsystem extends SubsystemBase {
+    private static final boolean EXTENDED_STATE = true;
+
     private final Solenoid m_punchSolenoid;
 
     public PunchSubsystem() {
@@ -15,7 +17,18 @@ public class PunchSubsystem extends SubsystemBase {
 
     @Override
     public void periodic() {
-        // TODO fill out
-        SmartDashboard.putNumber(SmartDashboardNames.PUNCH_RETRACTED, 0);
+        SmartDashboard.putBoolean(SmartDashboardNames.PUNCH_IS_RETRACTED, isExtended());
+    }
+
+    public boolean isExtended() {
+        return m_punchSolenoid.get() == EXTENDED_STATE;
+    }
+
+    public void extend() {
+        m_punchSolenoid.set(EXTENDED_STATE);
+    }
+
+    public void retract() {
+        m_punchSolenoid.set(!EXTENDED_STATE);
     }
 }

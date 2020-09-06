@@ -7,22 +7,25 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
 import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.SmartDashboardNames;
 
 public class SpinnyWheelSubsystem extends SubsystemBase {
 
     private final SpeedController m_wheelMotor;
 
     public SpinnyWheelSubsystem() {
-        m_wheelMotor = new Talon(Constants.SC_SPINNY_MOTOR);
+        m_wheelMotor = new CANSparkMax(Constants.CAN_SPINNY_MOTOR, CANSparkMaxLowLevel.MotorType.kBrushed);
 
     }
 
     @Override
     public void periodic() {
-        // This method will be called once per scheduler run
+        SmartDashboard.putNumber(SmartDashboardNames.SPINNY_WHEEL_MOTOR_SPEED, m_wheelMotor.get());
     }
 }

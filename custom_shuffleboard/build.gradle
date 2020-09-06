@@ -17,7 +17,7 @@ repositories {
 }
 
 ext {
-    shuffleboard_version = "2020.1.2";
+    shuffleboard_version = "2020.3.2";
     publishing_version = "1.0.0";
     publishing_url = "${rootDir}/build/publishing"
 }
@@ -75,7 +75,7 @@ dependencies {
 }
 
 
-//apply from: "../styleguide.gradle"
+apply from: "../styleguide/styleguide.gradle"
 
 publishing {
     repositories {

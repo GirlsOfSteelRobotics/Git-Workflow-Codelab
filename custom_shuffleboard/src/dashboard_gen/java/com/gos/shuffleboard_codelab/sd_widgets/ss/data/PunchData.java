@@ -50,7 +50,7 @@ public class PunchData extends ComplexData<PunchData> {
         return changed;
     }
 
-    public boolean getIsPunchRetracted() {
+    public boolean isPunchExtended() {
         return m_isPunchRetracted;
     }
 }

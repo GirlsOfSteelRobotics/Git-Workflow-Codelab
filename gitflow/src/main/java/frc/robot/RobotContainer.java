@@ -19,7 +19,9 @@ import java.util.List;
  * periodic methods (other than the scheduler calls).  Instead, the structure of the robot
  * (including subsystems, commands, and button mappings) should be declared here.
  */
+@SuppressWarnings("PMD.UnusedPrivateField")
 public class RobotContainer {
+    private static final String DRIVETRAIN_NAME = "m_drivetrain";
 
     private PJCodelab2020Part1Subsystem m_pjCodelab2020Part1;
     private PJCodelab2020Part2Subsystem m_pjCodelab2020Part2;
@@ -40,7 +42,7 @@ public class RobotContainer {
 
         List<String> sortedNames = new ArrayList<>();
         for (Field field : fields) {
-            if (!"m_drivetrain".equals(field.getName())) {
+            if (!DRIVETRAIN_NAME.equals(field.getName())) {
                 sortedNames.add(field.getType().getName());
             }
         }
@@ -51,9 +53,9 @@ public class RobotContainer {
         for (String className : sortedNames) {
             try {
                 Class<?> clazz = Class.forName(className);
-                Object object = clazz.getDeclaredConstructor().newInstance();
+                clazz.getDeclaredConstructor().newInstance();
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException e) {
-                e.printStackTrace();
+                e.printStackTrace(); // NOPMD
             }
         }
         System.out.println("********************************************************\n\n\n\n");
