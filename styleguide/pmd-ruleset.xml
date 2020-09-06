@@ -7,7 +7,7 @@
   <description>PMD Ruleset for Girls of Steel</description>
 
   <rule ref="category/java/bestpractices.xml">
-<!--    <exclude name="SystemPrintln" />-->
+    <exclude name="SystemPrintln" />
     <exclude name="JUnitAssertionsShouldIncludeMessage" />
     <exclude name="JUnitTestContainsTooManyAsserts" />
   </rule>
