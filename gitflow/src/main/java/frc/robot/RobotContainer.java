@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.TeleopDriveCommand;
+import frc.robot.subsystem.AriellaCodelab2020Part1;
 import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.subsystems.PJCodelab2020Part1Subsystem;
 import frc.robot.subsystems.PJCodelab2020Part2Subsystem;
@@ -25,6 +26,7 @@ public class RobotContainer {
 
     private PJCodelab2020Part1Subsystem m_pjCodelab2020Part1;
     private PJCodelab2020Part2Subsystem m_pjCodelab2020Part2;
+    private AriellaCodelab2020Part1 m_AriellaCodelab2020Part1;
 
     ///////////////////////////////////////
     // Don't touch things below here
