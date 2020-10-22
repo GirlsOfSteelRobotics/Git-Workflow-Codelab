@@ -25,7 +25,8 @@ public class RobotContainer {
 
     private PJCodelab2020Part1Subsystem m_pjCodelab2020Part1;
     private PJCodelab2020Part2Subsystem m_pjCodelab2020Part2;
-
+    private AlexCodelab2020Part2Subsystem m_alexCodelab2020Part2;
+    private PJCodelab2020Part2Subsystem m_pjCodelab2020Part2;
     ///////////////////////////////////////
     // Don't touch things below here
     ///////////////////////////////////////
