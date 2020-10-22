@@ -7,6 +7,7 @@ import frc.robot.commands.TeleopDriveCommand;
 import frc.robot.subsystems.ChassisSubsystem;
 import frc.robot.subsystems.PJCodelab2020Part1Subsystem;
 import frc.robot.subsystems.PJCodelab2020Part2Subsystem;
+import frc.robot.subsystems.VivianCodelab2020Part1Subsystem;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -25,6 +26,8 @@ public class RobotContainer {
 
     private PJCodelab2020Part1Subsystem m_pjCodelab2020Part1;
     private PJCodelab2020Part2Subsystem m_pjCodelab2020Part2;
+    private VivianCodelab2020Part1Subsystem m_vivianCodelab2020Part1;
+
 
     ///////////////////////////////////////
     // Don't touch things below here
