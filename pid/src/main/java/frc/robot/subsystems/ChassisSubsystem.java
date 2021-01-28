@@ -182,7 +182,7 @@ public class ChassisSubsystem extends SubsystemBase {
     }
 
     public void driveDistanceCustomControl(double goal) {
-        // TODO implement
+        m_differentialDrive.arcadeDrive(1, 0);
         m_differentialDrive.feed();
     }
 

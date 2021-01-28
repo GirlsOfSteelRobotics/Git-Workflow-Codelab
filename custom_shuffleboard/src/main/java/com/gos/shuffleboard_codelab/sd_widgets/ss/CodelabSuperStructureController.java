@@ -9,6 +9,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Scale;
 
+import com.gos.shuffleboard_codelab.sd_widgets.Utils;
 import com.gos.shuffleboard_codelab.sd_widgets.ss.data.ElevatorData;
 import com.gos.shuffleboard_codelab.sd_widgets.ss.data.PunchData;
 import com.gos.shuffleboard_codelab.sd_widgets.ss.data.SpinningWheelData;
@@ -57,20 +58,57 @@ public class CodelabSuperStructureController {
 
         m_group.getTransforms().add(scale);
 
-        // TODO implement
+        m_base.setX(1);
+        m_base.setY(50);
+        m_base.setWidth(32);
+        m_base.setHeight(5);
+
+        m_spinningWheel.setCenterX(32);
+        m_spinningWheel.setCenterY(50);
+        m_spinningWheel.setRadius(3);
+
+        m_punch.setX(25);
+        m_punch.setY(40);
+        m_punch.setWidth(1.5);
+        m_punch.setHeight(10);
+
+        m_elevatorBox.setX(2);
+        m_elevatorBox.setY(43);
+        m_elevatorBox.setWidth(2);
+        m_elevatorBox.setHeight(7);
+
+        m_liftUpperLimitSwitch.setX(15);
+        m_liftUpperLimitSwitch.setX(15);
+        m_liftUpperLimitSwitch.setWidth(15);
+        m_liftUpperLimitSwitch.setHeight(6);
+
+        m_liftLowerLimitSwitch.setX(23);
+        m_liftLowerLimitSwitch.setX(23);
+        m_liftLowerLimitSwitch.setWidth(23);
+        m_liftLowerLimitSwitch.setHeight(6);
+
+
     }
 
 
     public void updateElevator(ElevatorData elevatorData) {
-        // TODO implement
+        m_elevatorBox.setFill(Utils.getMotorColor(elevatorData.getSpeed()));
+        m_elevatorBox.setHeight(elevatorData.getHeight());
+        m_elevatorBox.setY(m_base.getY() - elevatorData.getHeight());
     }
 
     public void updatePunch(PunchData punchData) {
-        // TODO implement
+        if (punchData.isPunchExtended()) {
+            m_punch.;
+
+        }
+
+
     }
 
     public void updateSpinningWheel(SpinningWheelData spinningWheelData) {
-        // TODO implement
+        m_spinningWheel.setFill(Utils.getMotorColor(spinningWheelData.getMotorSpeed()));
+
     }
 
 
