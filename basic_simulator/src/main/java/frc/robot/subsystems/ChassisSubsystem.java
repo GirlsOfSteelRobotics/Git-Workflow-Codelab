@@ -39,15 +39,15 @@ public class ChassisSubsystem extends SubsystemBase {
     }
 
     public void setThrottle(double speed) {
-        // TODO implement
+        setSpeedAndSteer(speed, 0);
     }
 
-    public void setSpin(double turningSpeed) {
-        // TODO implement
+    public void setSpin(double steer) {
+        setSpeedAndSteer(0, steer);
     }
 
     public void setSpeedAndSteer(double speed, double steer) {
-        // TODO implement
+        m_differentialDrive.arcadeDrive(-speed, steer);
     }
 
     @Override
